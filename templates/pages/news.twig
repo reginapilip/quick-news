@@ -1,0 +1,19 @@
+{% extends "base.twig" %}
+
+{% block content %}
+{% for post in posts %}
+    <div class="row py-3 border-bottom">
+        <div class="col-2">
+            <img src="{{ theme.link }}/images/news/{{ post.slug }}.jpg" width="100%" class="rounded">
+        </div>
+        <div class="col-10">
+            <h5><a href="{{ post.link }}"></a><span class="text-dark">{{ post.title }}</span></h5>
+            <div class="mt-2">
+                {{ post.content|excerpt(50) }}
+                <a class="badge btn btn-light text-dark" href="{{ post.link }}">Read More</a>
+            </div>
+        </div>
+    </div>
+    
+{% endfor %}
+{% endblock %}

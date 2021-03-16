@@ -25,4 +25,7 @@ $context = Timber::context();
 
 $timber_post     = new Timber\Post();
 $context['post'] = $timber_post;
-Timber::render( array( 'page-' . $timber_post->post_name . '.twig', 'page.twig' ), $context );
+// updated hierarchy to read page templates from pages folder and to not prefix file name with 'page-...'
+// original code: 
+// Timber::render( array( 'page-' . $timber_post->post_name . '.twig', 'page.twig' ), $context );
+Timber::render( array( 'pages/' . $timber_post->post_name . '.twig', 'page.twig' ), $context );
