@@ -1,0 +1,17 @@
+{# {% if post.terms('post_tag') is not empty %}
+    <span class="font-weight-light text-secondary ml-2">
+        Tags
+    </span>
+    {% for tag in post.terms('post_tag') %}
+        <a href="{{tag.link}}" class="badge btn btn-light text-dark">{{tag.name}}</a>
+    {% endfor %}
+{% endif %} #}
+
+{% if list %}
+    <span class="font-weight-light text-secondary ml-2">
+        {{ label }}
+    </span>
+    {% for term in list %}
+        <a href="{{ term.link }}" class="badge btn btn-light text-dark">{{ term.name }}</a>
+    {% endfor %}
+{% endif %}
