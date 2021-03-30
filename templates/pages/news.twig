@@ -12,14 +12,15 @@
             {{include('partial/terms.twig', {list: post.terms('category'), label: 'Category'})}}
             {{include('partial/terms.twig', {list: post.terms('post_tag'), label: 'Tags'})}}
             {{include('partial/terms.twig', {list: post.terms('sponsor'), label: 'Sponsor'})}}
-            
             <div class="mt-2">
                 {{ post.content|excerpt(50) }}
                 <a class="badge btn btn-success" href="{{ post.link }}">Read More</a>
-                
             </div>
         </div>
     </div>
-    
 {% endfor %}
+{# <pre>
+    {{ dump(posts.pagination) }}
+</pre> #}
+{{ include('partial/pagination.twig')}}
 {% endblock %}

@@ -13,16 +13,21 @@
  * 7.index.php
  */
 
+// because I'm not using default query, must insert the code as seen below (17-20)
+global $paged;
+	if (!isset($paged) || !$paged){
+		$paged = 1;
+	}
 $context = Timber::context();
-
 // query to pull in most recent news
 $query = array(
     'post_type' => 'post',
     'order_by' => 'ID',
     'order' => 'DESC',
-    'posts_per_page' => '12'
+    'posts_per_page' => '12',
+    'paged' => $paged
 );
-$context['posts'] = new Timber\Postquery($query);
+$context['posts'] = new Timber\PostQuery($query);
 
 $timber_post     = new Timber\Post();
 $context['post'] = $timber_post;
