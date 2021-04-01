@@ -1,23 +1,44 @@
 {% extends "base.twig" %}
 
 {% block content %}
+
 {% for post in posts %}
-    <div class="row py-3 border-bottom">
-        <div class="col-2">
-            <img src="{{ theme.link }}/images/news/{{ post.slug }}.jpg" width="100%" class="rounded">
-        </div>
-        <div class="col-10">
-            <h5><a href="{{ post.link }}"></a><span class="text-dark">{{ post.title }}</span></h5>
-            
-            {{include('partial/terms.twig', {list: post.terms('category'), label: 'Category'})}}
-            {{include('partial/terms.twig', {list: post.terms('post_tag'), label: 'Tags'})}}
-            {{include('partial/terms.twig', {list: post.terms('sponsor'), label: 'Sponsor'})}}
-            <div class="mt-2">
-                {{ post.content|excerpt(50) }}
-                <a class="badge btn btn-success" href="{{ post.link }}">Read More</a>
+    {% if post.breaking %}
+        <div class="row my-2 py-3 px-3 bg-light bg-gradient shadow">
+            <div class="col-3">
+                <img src="{{ theme.link }}/images/news/{{ post.slug }}.jpg" width="100%" class="rounded">
+            </div>
+            <div class="col-9">
+                <p class="badge text-light bg-danger me-2">💥 BREAKING NEWS!</p>
+                <h5><a class="link-danger" href="{{ post.link }}"><span>{{ post.title }}</span></a></h5>
+                
+                {{include('partial/terms.twig', {list: post.terms('category'), label: 'Category'})}}
+                {{include('partial/terms.twig', {list: post.terms('post_tag'), label: 'Tags'})}}
+                {{include('partial/terms.twig', {list: post.terms('sponsor'), label: 'Sponsor'})}}
+                <div class="mt-2">
+                    {{ post.content|excerpt(110) }}
+                    <a class="badge btn btn-success" href="{{ post.link }}">Read More</a>
+                </div>
             </div>
         </div>
-    </div>
+    {% else %}
+        <div class="row py-3 border-bottom">
+            <div class="col-2">
+                <img src="{{ theme.link }}/images/news/{{ post.slug }}.jpg" width="100%" class="rounded">
+            </div>
+            <div class="col-10">
+                <h5><a class="link-dark" href="{{ post.link }}"><span>{{ post.title }}</span></a></h5>
+                
+                {{include('partial/terms.twig', {list: post.terms('category'), label: 'Category'})}}
+                {{include('partial/terms.twig', {list: post.terms('post_tag'), label: 'Tags'})}}
+                {{include('partial/terms.twig', {list: post.terms('sponsor'), label: 'Sponsor'})}}
+                <div class="mt-2">
+                    {{ post.content|excerpt(50) }}
+                    <a class="badge btn btn-success" href="{{ post.link }}">Read More</a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
 {% endfor %}
 {# <pre>
     {{ dump(posts.pagination) }}
