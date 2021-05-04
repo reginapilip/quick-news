@@ -1,4 +1,11 @@
 {% extends "base.twig" %}
+{% import "partial/macros.twig" as functions %}
+
+{% block subheader %}
+    {% if post.breaking %}
+        {{ functions.postHeader(theme.link ~ "/images/breaking_news.jpg", "Breaking News") }}
+    {% endif %}
+{% endblock %}
 
 {% block content %}
 <div class="row">

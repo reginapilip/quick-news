@@ -1,0 +1,9 @@
+{% macro postHeader(bgImage, headingTitle) %}
+<div class="container-fluid">  
+    <div class="container">
+        <h1 class="text-white text-center fw-bold py-5" style="background-image: url({{ bgImage }}); background-size: cover;">
+            {{ headingTitle }}
+        </h1>
+    </div>
+</div>
+{% endmacro %}
