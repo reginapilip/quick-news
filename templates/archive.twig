@@ -1,12 +1,8 @@
 {% extends "base.twig" %}
 
 {% block content %}
-
 {% for post in posts %}
     {{ include('partial/news-teaser.twig')}}
 {% endfor %}
-{# <pre>
-    {{ dump(posts.pagination) }}
-</pre> #}
-{{ include('partial/pagination.twig')}}
+    {{ include('partial/pagination.twig')}}
 {% endblock %}
